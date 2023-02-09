@@ -1,7 +1,9 @@
 package es.uah.criticasUsers.service;
 
 import es.uah.criticasUsers.dao.ICriticasDAO;
+import es.uah.criticasUsers.dao.IUsersDAO;
 import es.uah.criticasUsers.model.Critica;
+import es.uah.criticasUsers.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ public class CriticasServiceIm implements ICriticasService{
 
     @Autowired
     ICriticasDAO criticasDAO;
+
+    @Autowired
+    IUsersDAO usersDAO;
 
     @Override
     public List<Critica> findAll() {
@@ -33,6 +38,8 @@ public class CriticasServiceIm implements ICriticasService{
 
     @Override
     public void saveCritica(Critica critica) {
+       // User user = usersDAO.findUserById(1);
+      //  critica.setUser(user);
         criticasDAO.saveCritica(critica);
 
     }

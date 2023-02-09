@@ -15,6 +15,8 @@ public interface IUsersService {
 
     User findUserByEmail (String email);
 
+    User findUserByEmailPassword (String email, String password);
+
     void saveUser(User user);
 
     void deleteUser(Integer idUser);

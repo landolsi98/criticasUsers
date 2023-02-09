@@ -1,6 +1,8 @@
 package es.uah.criticasUsers.service;
 
+import es.uah.criticasUsers.dao.IRolesDAO;
 import es.uah.criticasUsers.dao.IUsersDAO;
+import es.uah.criticasUsers.model.Rol;
 import es.uah.criticasUsers.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +15,9 @@ public class UsersServiceIm implements IUsersService{
 
     @Autowired
     IUsersDAO usersDAO;
+@Autowired
 
+    IRolesDAO rolesDAO;
 
     @Override
     public List<User> findAll() {
@@ -36,7 +40,14 @@ public class UsersServiceIm implements IUsersService{
     }
 
     @Override
+    public User findUserByEmailPassword(String email, String password) {
+        return usersDAO.findUserByEmailPassword(email, password);
+    }
+
+    @Override
     public void saveUser(User user) {
+        Rol rol = rolesDAO.findRolByRol("User");
+        user.setRol(rol);
         usersDAO.saveUser(user);
 
     }
@@ -49,6 +60,8 @@ public class UsersServiceIm implements IUsersService{
 
     @Override
     public void updateUser(User user) {
+        Rol rol = rolesDAO.findRolByRol("User");
+        user.setRol(rol);
         usersDAO.updateUser(user);
 
     }

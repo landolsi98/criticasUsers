@@ -37,7 +37,7 @@ public class User {
 
 
     @ManyToOne
-    @JoinColumn(name = "rol", referencedColumnName = "idRol" ,nullable = false)
+    @JoinColumn(name = "rol", referencedColumnName = "idRol" , nullable = false)
     @JsonIgnoreProperties("User")
 
 

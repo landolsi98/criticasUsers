@@ -33,6 +33,11 @@ public class UsersController {
         return usersService.findUserByUsername(username);
     }
 
+    @GetMapping("users/login/{email}/{password}")
+    public User findUserByEmailWithPassword(@PathVariable("email") String email, @PathVariable ("password")String password) {
+        return usersService.findUserByEmailPassword(email, password);
+    }
+
     @PostMapping ("/users")
     public void saveUser(@RequestBody User user) {
         usersService.saveUser(user);

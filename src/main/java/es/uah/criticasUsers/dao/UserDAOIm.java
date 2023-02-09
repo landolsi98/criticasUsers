@@ -47,6 +47,18 @@ public class UserDAOIm  implements IUsersDAO {
         }
         return null;
     }
+
+
+
+    @Override
+    public User findUserByEmailPassword(String email, String password) {
+        Optional<User> optional = Optional.ofNullable(usersJPA.findByEmailAndPassword(email, password));
+        if (optional.isPresent()) {
+            return optional.get();
+        }
+        return null;
+    }
+
     @Override
     public void saveUser (User user){
         usersJPA.save(user);
